@@ -30,7 +30,7 @@ const AppProvider = ({ children }) => {
     fetchMovies(`${API_ENDPOINT}&s=${query}`);
   }, [query]);
   return (
-    <AppContext.Provider value={{ loading, movies, query, setQuery }}>
+    <AppContext.Provider value={{ loading, movies, query, error, setQuery }}>
       {children}
     </AppContext.Provider>
   );
