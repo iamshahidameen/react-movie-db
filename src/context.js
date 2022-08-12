@@ -17,10 +17,12 @@ const AppProvider = ({ children }) => {
       if (data.Response === 'True') {
         setMovies(data.Search);
         setLoading(false);
+        setError({ show: false });
       }
     } catch (error) {
       console.log(error);
       setLoading(false);
+      setError({ show: true, msg: 'No Movie Found' });
     }
   };
 
@@ -28,7 +30,7 @@ const AppProvider = ({ children }) => {
     fetchMovies(`${API_ENDPOINT}&s=${query}`);
   }, [query]);
   return (
-    <AppContext.Provider value={{ loading, movies }}>
+    <AppContext.Provider value={{ loading, movies, query, setQuery }}>
       {children}
     </AppContext.Provider>
   );
