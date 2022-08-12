@@ -5,7 +5,8 @@ console.log(API_ENDPOINT);
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
-  return <AppContext.Provider value="hello">{children}</AppContext.Provider>;
+  const [loading, setLoading] = useState(true);
+  return <AppContext.Provider value={loading}>{children}</AppContext.Provider>;
 };
 // make sure use
 export const useGlobalContext = () => {
